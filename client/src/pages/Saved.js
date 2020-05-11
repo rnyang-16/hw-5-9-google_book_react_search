@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Main from "../components/Main";
-import BookCards from "../components/BookCards";
+import SavedBookCards from "../components/SavedBookCards";
 import API from "../utils/API";
+import DataAreaContext from "../utils/DataAreaContext";
 
 function Saved() {
   // Setting our component's initial state
@@ -34,7 +35,11 @@ function Saved() {
     <div>
       <Header page="saved" custom="navbar-expand-lg bg-dark" />
       <Main name='Saved'>
-        <BookCards />
+        <DataAreaContext.Provider
+          value={{ books, deleteBook }}
+          >
+          <SavedBookCards />
+        </DataAreaContext.Provider>
       </Main>
       <Footer />
     </div>
